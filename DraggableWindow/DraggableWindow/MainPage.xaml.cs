@@ -93,9 +93,8 @@ namespace DraggableWindow
 
       draggableGrid.SizeChanged += (s, e) =>
       {
-        if (IsAcrylicSupported)
-          _hostSprite.Size
-            = new Vector2((float)e.NewSize.Width, (float)e.NewSize.Height);
+        _hostSprite.Size
+          = new Vector2((float)e.NewSize.Width, (float)e.NewSize.Height);
       };
     }
 
