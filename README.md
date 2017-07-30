@@ -1,1 +1,1 @@
-# Draggable Window
+# ブログ記事のコード
