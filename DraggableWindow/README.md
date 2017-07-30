@@ -1,5 +1,5 @@
 # DraggableWindow
-【UWP アプリ】どこでも掴んで動かせるウィンドウ
+【UWP アプリ】どこでも掴んで動かせるウィンドウ (Visual Studio 2017)
 
 ブログ記事 ⇒ [【#UWP】 どこでも掴んで動かせるウィンドウを作る](http://bluewatersoft.cocolog-nifty.com/blog/2017/07/uwp-07a2.html) (2017/7/30)
 
