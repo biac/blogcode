@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Numerics;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Threading.Tasks;
+﻿using System.Numerics;
 using Windows.ApplicationModel.Core;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.Foundation.Metadata;
 using Windows.System.Profile;
 using Windows.UI;
@@ -15,20 +7,11 @@ using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Hosting;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
-// 空白ページの項目テンプレートについては、https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x411 を参照してください
 
 namespace DraggableWindow
 {
-  /// <summary>
-  /// それ自体で使用できる空白ページまたはフレーム内に移動できる空白ページ。
-  /// </summary>
   public sealed partial class MainPage : Page
   {
     public MainPage()
@@ -39,7 +22,9 @@ namespace DraggableWindow
       // ⇒ ドラッグやダブルクリックや右クリックに反応するようになる
       Window.Current.SetTitleBar(draggableGrid);
 
-      // 中身をタイトルバーにまで押し出し、[X] ボタン等の背景を透明に
+      // 中身をタイトルバーにまで押し出し、[X] ボタン等の背景を透明にする。
+      // 【参照】WinRT／Metro TIPS：タイトルバーにUIコントロールを配置するには？
+      // http://www.atmarkit.co.jp/ait/articles/1510/14/news022.html
       CoreApplication.GetCurrentView()
         .TitleBar.ExtendViewIntoTitleBar = true;
       ApplicationView.GetForCurrentView()
@@ -60,9 +45,6 @@ namespace DraggableWindow
         SetPointerCursor(CoreCursorType.Hand);
         e.Handled = true;
       };
-
-      // Acrylic Effect
-      InitializeAcrylicBrush();
     }
 
     private void SetPointerCursor(CoreCursorType cursorType, uint resourceId = 0)
@@ -71,6 +53,9 @@ namespace DraggableWindow
     protected override void OnNavigatedTo(NavigationEventArgs e)
     {
       base.OnNavigatedTo(e);
+
+      // Acrylic Effect
+      InitializeAcrylicBrush();
 
       // マウスカーソルのデフォルトは「✋」にする（上手く行かない… orz）
       SetPointerCursor(CoreCursorType.Hand);
@@ -110,7 +95,7 @@ namespace DraggableWindow
       {
         if (IsAcrylicSupported)
           _hostSprite.Size
-          = new Vector2((float)e.NewSize.Width, (float)e.NewSize.Height);
+            = new Vector2((float)e.NewSize.Width, (float)e.NewSize.Height);
       };
     }
 

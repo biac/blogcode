@@ -8,23 +8,23 @@
     mc:Ignorable="d">
 
   <Grid x:Name="rootGrid">
+    <!-- タイトルバー扱いする Grid -->
     <Grid x:Name="draggableGrid" />
+    
     <Grid x:Name="halfTransparent" IsHitTestVisible="False"
           Background="{ThemeResource SystemControlBackgroundAccentBrush}"
           Opacity="0.3" />
 
+    <!-- 操作可能な UI を置くための Grid -->
     <Grid x:Name="contentGrid" Margin="20">
       <Grid.RowDefinitions>
         <RowDefinition Height="*" />
         <RowDefinition Height="Auto" />
       </Grid.RowDefinitions>
-
       <Viewbox >
-        <Image  Source="Assets/SD4.png"
-                HorizontalAlignment="Center" IsHitTestVisible="False"
-                />
+        <Image  Source="Assets/SD4.png" HorizontalAlignment="Center"
+                IsHitTestVisible="False" />
       </Viewbox>
-
       <StackPanel Grid.Row="1" HorizontalAlignment="Center">
         <ToggleSwitch Header="ToggleSwitch" />
         <TextBox Header="TextBox" TabIndex="0" />
