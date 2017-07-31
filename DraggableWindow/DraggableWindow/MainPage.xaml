@@ -9,7 +9,8 @@
 
   <Grid x:Name="rootGrid">
     <!-- タイトルバー扱いする Grid -->
-    <Grid x:Name="draggableGrid" />
+    <Grid x:Name="draggableGrid"
+          Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" />
     
     <Grid x:Name="halfTransparent" IsHitTestVisible="False"
           Background="{ThemeResource SystemControlBackgroundAccentBrush}"
