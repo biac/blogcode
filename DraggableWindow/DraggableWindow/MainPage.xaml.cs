@@ -1,13 +1,11 @@
-﻿using System.Numerics;
+﻿using System;
 using Windows.ApplicationModel.Core;
-using Windows.Foundation.Metadata;
-using Windows.System.Profile;
 using Windows.UI;
 using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Hosting;
+using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 namespace DraggableWindow
@@ -45,6 +43,9 @@ namespace DraggableWindow
         SetPointerCursor(CoreCursorType.Hand);
         e.Handled = true;
       };
+
+      // Acrylic Effect
+      InitializeAcrylicBrush();
     }
 
     private void SetPointerCursor(CoreCursorType cursorType, uint resourceId = 0)
@@ -54,49 +55,63 @@ namespace DraggableWindow
     {
       base.OnNavigatedTo(e);
 
-      // Acrylic Effect
-      InitializeAcrylicBrush();
-
       // マウスカーソルのデフォルトは「✋」にする（上手く行かない… orz）
       SetPointerCursor(CoreCursorType.Hand);
-    }
-
-    protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
-    {
-      base.OnNavigatingFrom(e);
-
-      _hostSprite?.Dispose();
     }
 
 
 
     // Acrylic Effect
 
-    private static readonly bool IsAcrylicSupported
-      = ApiInformation.IsMethodPresent(
-          "Windows.UI.Composition.Compositor", "CreateHostBackdropBrush")
-        &&
-        AnalyticsInfo.VersionInfo.DeviceFamily == "Windows.Desktop";
+    UISettings _uiSettings = new UISettings(); // 画面遷移があるときは App.xaml.cs に置く
+    CoreWindowActivationState _activationState;
 
-    Windows.UI.Composition.SpriteVisual _hostSprite;
+    private void SetBackgroundBrush()
+    {
+      var accentColor = _uiSettings.GetColorValue(UIColorType.AccentDark1);
+
+      if (_uiSettings.AdvancedEffectsEnabled 
+          && _activationState != CoreWindowActivationState.Deactivated)
+      {
+        draggableGrid.Background 
+          = new MyerSplash.Common.Brush.AcrylicHostBrush()
+            {
+              TintColor = accentColor,
+              TintColorFactor = 0.4,
+              BackdropFactor = 0.6,
+              BlurAmount = 20,
+            };
+      }
+      else
+      {
+        draggableGrid.Background = new SolidColorBrush(accentColor);
+      }
+    }
 
     private void InitializeAcrylicBrush()
     {
-      if (!IsAcrylicSupported || _hostSprite != null)
-        return;
+      Window.Current.Activated
+        += (sender, e) =>
+        {
+          _activationState = e.WindowActivationState;
+          SetBackgroundBrush();
+        };
 
-      var compositor
-        = ElementCompositionPreview.GetElementVisual(draggableGrid).Compositor;
-      _hostSprite = compositor.CreateSpriteVisual();
-      _hostSprite.Brush = compositor.CreateHostBackdropBrush();
-      ElementCompositionPreview.SetElementChildVisual(draggableGrid, _hostSprite);
+      // 別スレッドで叩かれる!
+      _uiSettings.AdvancedEffectsEnabledChanged
+        += (setting, o) => runAsync_SetBackgroundBrush();
 
-      draggableGrid.SizeChanged += (s, e) =>
+      // 別スレッドで叩かれる!
+      _uiSettings.ColorValuesChanged
+        += (setting, o) => runAsync_SetBackgroundBrush();
+
+      async void runAsync_SetBackgroundBrush()
       {
-        _hostSprite.Size
-          = new Vector2((float)e.NewSize.Width, (float)e.NewSize.Height);
-      };
+        await this.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+        {
+          SetBackgroundBrush();
+        });
+      }
     }
-
   }
 }
