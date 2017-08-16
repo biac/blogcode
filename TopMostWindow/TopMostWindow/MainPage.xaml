@@ -8,10 +8,11 @@
     mc:Ignorable="d">
 
   <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
       <Grid.RowDefinitions>
-        <RowDefinition /><RowDefinition /><RowDefinition />
+        <RowDefinition />
+        <RowDefinition />
+        <RowDefinition />
       </Grid.RowDefinitions>
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="Auto" />
@@ -19,19 +20,19 @@
       </Grid.ColumnDefinitions>
       <TextBlock Grid.ColumnSpan="2" FontWeight="Bold">ページサイズ</TextBlock>
       <TextBlock Grid.Row="1" HorizontalAlignment="Right" Margin="0,0,5,0">Width:</TextBlock>
-      <TextBlock Grid.Row="1" Grid.Column="1" Text="{x:Bind PageSize.Width}" TextTrimming="CharacterEllipsis" />
+      <TextBlock Grid.Row="1" Grid.Column="1"
+                 Text="{x:Bind PageSize.Width}" TextTrimming="CharacterEllipsis" />
       <TextBlock Grid.Row="2" HorizontalAlignment="Right" Margin="0,0,5,0">Height:</TextBlock>
-      <TextBlock Grid.Row="2" Grid.Column="1" Text="{x:Bind PageSize.Height}" TextTrimming="CharacterEllipsis" />
+      <TextBlock Grid.Row="2" Grid.Column="1"
+                 Text="{x:Bind PageSize.Height}" TextTrimming="CharacterEllipsis" />
     </Grid>
 
-    <Ellipse Width="30" Height="30" Fill="Pink"
+    <Ellipse Width="30" Height="30" Fill="DarkRed"
              HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
     <ToggleButton x:Name="viewModeToggle" VerticalAlignment="Bottom"
-                    Padding="10,5,9,4" Click="viewModeToggle_Click">
-      <TextBlock>
-           <Run FontFamily="Segoe MDL2 Assets">&#xE17C;</Run>
-      </TextBlock>
+                  Padding="10,5,9,4" Click="viewModeToggle_Click">
+      <FontIcon Glyph="&#xE17C;" />
     </ToggleButton>
   </Grid>
 </Page>

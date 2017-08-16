@@ -73,6 +73,7 @@ namespace TopMostWindow
           // プレランチを「申請」します
           CoreApplication.EnablePrelaunch(true);
         }
+
         // 現在のウィンドウがアクティブであることを確認します
         ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(192, 192));
         Window.Current.Activate();

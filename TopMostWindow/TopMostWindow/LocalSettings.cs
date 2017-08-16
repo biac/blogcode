@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
@@ -18,7 +14,8 @@ namespace TopMostWindow
     const string CompactOverlaySizeKey = "CompactOverlaySize";
     public static Size CompactOverlaySize
     {
-      get {
+      get
+      {
         if (_values.ContainsKey(CompactOverlaySizeKey))
           return (Size)_values[CompactOverlaySizeKey];
         return Size.Empty;
@@ -40,6 +37,5 @@ namespace TopMostWindow
       }
       set => _values [PreviousViewModeKey] = value.ToString();
     }
-
   }
 }
