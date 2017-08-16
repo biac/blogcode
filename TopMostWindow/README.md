@@ -1,6 +1,9 @@
 # TopMostWindow
 
-CompactOverlay ���[�h�̃T���v���ł��B  
-PinP (Picture in Picture) �Ƃ������A�u�őO�ʂɕ\���v �Ƃ������ق���������₷���ł��傤�ˁB
+CompactOverlay モードのサンプルです。  
+PinP (Picture in Picture) というか、「最前面に表示」 といったほうが分かりやすいでしょうね。
 
 
+
+
+![スクリーンキャプチャー](../images/20170816_CompactOverlayMode01.png)
