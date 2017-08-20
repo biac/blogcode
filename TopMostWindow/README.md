@@ -2,7 +2,8 @@
 
 【UWP アプリ】最前面に表示できるウィンドウ (Visual Studio 2017)
 
-CompactOverlay モードを使うサンプルです。  
+CompactOverlay モードを使うサンプルです。  
+Windows 10 1703 (build 15063) で提供された TryEnterViewModeAsync を使っています。  
 
 ブログ記事:  
 [【#UWP】 CompactOverlay モード: Picture in Picture というか、「最前面に表示」するウィンドウを作る](http://bluewatersoft.cocolog-nifty.com/blog/2017/08/uwp-compactover.html) (2017/8/16)  
