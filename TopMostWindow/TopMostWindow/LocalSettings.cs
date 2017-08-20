@@ -18,7 +18,7 @@ namespace TopMostWindow
       {
         if (_values.ContainsKey(CompactOverlaySizeKey))
           return (Size)_values[CompactOverlaySizeKey];
-        return Size.Empty;
+        return default(Size);
       }
       set => _values[CompactOverlaySizeKey] = value;
     }

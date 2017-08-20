@@ -31,6 +31,7 @@
              HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
     <ToggleButton x:Name="viewModeToggle" VerticalAlignment="Bottom"
+                  Style="{StaticResource CompactModeToggleButtonStyle}"
                   Padding="10,5,9,4" Click="viewModeToggle_Click">
       <FontIcon Glyph="&#xE17C;" />
     </ToggleButton>
