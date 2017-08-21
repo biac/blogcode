@@ -63,7 +63,7 @@ namespace DraggableWindow
 
     // Acrylic Effect
 
-    UISettings _uiSettings = new UISettings(); // 画面遷移があるときは App.xaml.cs に置く
+    UISettings _uiSettings = new UISettings();
     CoreWindowActivationState _activationState;
 
     private void SetBackgroundBrush()
@@ -73,7 +73,7 @@ namespace DraggableWindow
       if (_uiSettings.AdvancedEffectsEnabled 
           && _activationState != CoreWindowActivationState.Deactivated)
       {
-        draggableGrid.Background 
+        backgroundGrid.Background 
           = new MyerSplash.Common.Brush.AcrylicHostBrush()
             {
               TintColor = accentColor,
@@ -84,7 +84,7 @@ namespace DraggableWindow
       }
       else
       {
-        draggableGrid.Background = new SolidColorBrush(accentColor);
+        backgroundGrid.Background = new SolidColorBrush(accentColor);
       }
     }
 

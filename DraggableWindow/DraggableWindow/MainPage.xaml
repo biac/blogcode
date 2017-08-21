@@ -8,10 +8,19 @@
     mc:Ignorable="d">
 
   <Grid x:Name="rootGrid">
+    <!-- Acrylic な背景を付けるための Grid -->
+    <Grid x:Name="backgroundGrid" 
+          Background="{StaticResource SystemControlBackgroundAccentBrush}"
+      />
+
     <!-- タイトルバー扱いする Grid -->
-    <Grid x:Name="draggableGrid"
-          Background="{StaticResource SystemControlBackgroundAccentBrush}">
-    </Grid>
+    <Grid x:Name="draggableGrid" Margin="2"
+          Background="Transparent" />
+    <!--
+    ※ ↑Transparent でいいから、Background の指定が必要!
+          Background が null のままではドラッグできない。
+    ※ 周囲を少し空けておくと、ウインドウをリサイズしやすい。
+    -->
 
     <!-- 操作可能な UI を置くための Grid -->
     <Grid x:Name="contentGrid" Margin="20">
