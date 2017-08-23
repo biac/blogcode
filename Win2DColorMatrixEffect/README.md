@@ -6,7 +6,7 @@
 
 
 ブログ記事:  
-[(TBD)](http://bluewatersoft.cocolog-nifty.com/blog/2017/08/uwp-compactover.html) (2017/8/16)  
+[【#UWP】 ビットマップの表示色を変える (Win2D.uwp 経由で Direct2D を使う)](http://bluewatersoft.cocolog-nifty.com/blog/2017/08/uwp-win2duwp-di.html) (2017/8/23)  
 
 以下の NuGet パッケージが必要です  
 [Win2D.uwp](https://www.nuget.org/packages/Win2D.uwp)  
