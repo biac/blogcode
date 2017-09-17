@@ -7,8 +7,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
   <Page.Resources>
+    <FontFamily x:Key="ContentControlThemeFontFamily">Yu Gothic, XamlAutoFontFamily</FontFamily>
     <Style TargetType="TextBlock">
-      <Setter Property="FontFamily" Value="Yu Gothic" />
+      <Setter Property="FontFamily" Value="Yu Gothic, XamlAutoFontFamily" />
       <Setter Property="TextWrapping" Value="WrapWholeWords" />
       <Setter Property="Margin" Value="5" />
     </Style>
@@ -16,7 +17,7 @@
       <Setter Property="FontSize" Value="24" />
       <Setter Property="Foreground" Value="#00a2e8" />
       <Setter Property="HorizontalAlignment" Value="Center" />
-      <Setter Property="FontFamily" Value="Yu Gothic" />
+      <Setter Property="FontFamily" Value="Yu Gothic, XamlAutoFontFamily" />
       <Setter Property="TextWrapping" Value="WrapWholeWords" />
       <Setter Property="Margin" Value="5" />
     </Style>
@@ -106,7 +107,7 @@
     </TextBlock>
 
     <Button VerticalAlignment="Top" Margin="30, 10"
-            Click="FileOpenButton_Click"
+            Click="FileOpenButton_Click" TabIndex="0"
             >画像ファイルを開く</Button>
 
   </Grid>
