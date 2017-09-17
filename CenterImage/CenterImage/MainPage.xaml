@@ -8,12 +8,17 @@
     mc:Ignorable="d">
   <Page.Resources>
     <Style TargetType="TextBlock">
+      <Setter Property="FontFamily" Value="Yu Gothic" />
       <Setter Property="TextWrapping" Value="WrapWholeWords" />
+      <Setter Property="Margin" Value="5" />
     </Style>
     <Style TargetType="TextBlock" x:Key="Header">
       <Setter Property="FontSize" Value="24" />
       <Setter Property="Foreground" Value="#00a2e8" />
       <Setter Property="HorizontalAlignment" Value="Center" />
+      <Setter Property="FontFamily" Value="Yu Gothic" />
+      <Setter Property="TextWrapping" Value="WrapWholeWords" />
+      <Setter Property="Margin" Value="5" />
     </Style>
   </Page.Resources>
 

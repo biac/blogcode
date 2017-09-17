@@ -20,6 +20,21 @@ namespace CenterImage
     private StorageFile ImageFile { get; set; }
     private BitmapImage Bitmap { get; set; }
 
+    private async Task UpdateImageAsync(StorageFile file)
+    {
+      ImageFile = file;
+
+      var b = new BitmapImage();
+      using (var s = await file.OpenReadAsync())
+      {
+        b.SetSource(s);
+      }
+      Bitmap = b;
+
+      Bindings.Update();
+    }
+
+
 
     public MainPage()
     {
@@ -29,21 +44,10 @@ namespace CenterImage
       {
         // インストール フォルダーにある画像
         // ⇒ これは StorageFile.Path を Image コントロールにバインドできる
-        ImageFile = await Package.Current.InstalledLocation
+        var file = await Package.Current.InstalledLocation
                       .GetFileAsync("800px-Servals_Thoiry_19801.jpg");
-        await SetBitmpAsync(ImageFile);
-        Bindings.Update();
+        await UpdateImageAsync(file);
       };
-    }
-
-    private async Task SetBitmpAsync(StorageFile file)
-    {
-      var b = new BitmapImage();
-      using (var s = await file.OpenReadAsync())
-      {
-        b.SetSource(s);
-      }
-      Bitmap = b;
     }
 
     private async void FileOpenButton_Click(object sender, RoutedEventArgs e)
@@ -57,16 +61,14 @@ namespace CenterImage
       picker.FileTypeFilter.Add(".jpg");
       picker.FileTypeFilter.Add(".jpeg");
       picker.FileTypeFilter.Add(".gif");
-      var ImageFile = await picker.PickSingleFileAsync();
-      if (ImageFile is null)
+      var file = await picker.PickSingleFileAsync();
+      if (file is null)
         return;
 
       // 任意の場所にある画像
       // ⇒ これは StorageFile.Path を Image コントロールにバインドできない
       //    つまり、BitmapImage などへの変換が必須
-      this.ImageFile = ImageFile;
-      await SetBitmpAsync(this.ImageFile);
-      Bindings.Update();
+      await UpdateImageAsync(file);
     }
   }
 }
