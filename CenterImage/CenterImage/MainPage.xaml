@@ -17,7 +17,7 @@
     </Style>
   </Page.Resources>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+  <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <ScrollViewer VerticalAlignment="Center" 
                   VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto"
                   HorizontalScrollMode="Auto" HorizontalScrollBarVisibility="Auto">
@@ -38,27 +38,37 @@
         <!-- Image.Source に StorageFile をバインド -->
         <TextBlock Style="{StaticResource Header}">StorageFile をバインド</TextBlock>
         <Image Grid.Row="1" Height="200"
-               Source="{x:Bind _file.Path}" />
+               Source="{x:Bind ImageFile.Path}" />
         <TextBlock Grid.Row="2" IsTextSelectionEnabled="True">
 &lt;Image Height="200"
-              <Bold>Source="{x:Bind _file.Path}"</Bold> /&gt;
+              <Bold>Source="{x:Bind ImageFile.Path}"</Bold> /&gt;
           <LineBreak/><LineBreak/>
           Image コントロールの Source プロパティには、
-          StorageFile オブジェクトの Path プロパティを直接バインドできる
+          インストール フォルダーや LocalData などにあるファイルならば、
+          StorageFile オブジェクトの Path プロパティを直接バインドできる。
+          <LineBreak/>
+          それ以外の場所にあるファイルはだめ。
+          [画像ファイルを開く] ボタンで他の場所のファイルを選択すると、
+          エラーにはならないものの画像は表示されない。
+          (マニフェストの capability は関係なさそうだ)
         </TextBlock>
 
         <!-- 正方形に表示 -->
         <TextBlock Style="{StaticResource Header}"
                    Grid.Column="2">正方形に表示</TextBlock>
         <Image Grid.Column="2" Grid.Row="1" Height="200" Width="200" 
-               Source="{x:Bind _file.Path}" Stretch="UniformToFill" />
+               Source="{x:Bind Bitmap}" Stretch="UniformToFill" />
         <TextBlock Grid.Column="2" Grid.Row="2" IsTextSelectionEnabled="True">
 &lt;Image Height="200" Width="200" 
-               Source="{x:Bind _file.Path}" <Bold>Stretch="UniformToFill"</Bold> /&gt;
+               Source="{x:Bind Bitmap}" <Bold>Stretch="UniformToFill"</Bold> /&gt;
           <LineBreak/><LineBreak/>
           Image コントロールの Stretch プロパティを
           UniformToFill にすると、 画像の縦横比 (アスペクト) は保たれる。
-          ただし、 画像の左上を基準として表示されてしまう
+          ただし、 画像の左上を基準として表示されてしまう。
+          <LineBreak/>
+          なお、 これと次の画像は BitmapImage オブジェクトをバインドしているので、
+          [画像ファイルを開く] ボタンで他の場所のファイルを選択しても、
+          ちゃんと表示される。
         </TextBlock>
 
         <!-- 画像の中央を表示 -->
@@ -66,26 +76,33 @@
                    Grid.Column="4">画像の中央を表示</TextBlock>
         <Rectangle Grid.Column="4" Grid.Row="1" Height="200" Width="200">
           <Rectangle.Fill>
-            <ImageBrush Stretch="UniformToFill" ImageSource="{x:Bind _file.Path}" />
+            <ImageBrush Stretch="UniformToFill" ImageSource="{x:Bind Bitmap}" />
           </Rectangle.Fill>
         </Rectangle>
         <TextBlock Grid.Column="4" Grid.Row="2" IsTextSelectionEnabled="True">
 &lt;Rectangle Height="200" Width="200"&gt;<LineBreak/>
-           &lt;Rectangle.Fill&gt;<LineBreak/>
-             <Bold>&lt;ImageBrush Stretch="UniformToFill" ImageSource="{x:Bind _file.Path}" /&gt;</Bold><LineBreak/>
+          &lt;Rectangle.Fill&gt;<LineBreak/>
+             <Bold>&lt;ImageBrush Stretch="UniformToFill" ImageSource="{x:Bind Bitmap}" /&gt;</Bold><LineBreak/>
           &lt;/Rectangle.Fill&gt;<LineBreak/>
 &lt;/Rectangle /&gt;
           <LineBreak/><LineBreak/>
           Image コントロールをやめて Rectangle コントロールや Grid コントロールなどにして、
-          その中を ImageBrush コントロールで埋める。
+          その中 (Grid なら背景) を ImageBrush コントロールで埋める。
           ImageBrush コントロールの Stretch プロパティを UniformToFill にすれば、
-          画像の縦横比 (アスペクト) を保ちつつ画像の中央部分を表示できる
+          画像の縦横比 (アスペクト) を保ちつつ画像の中央部分を表示できる。
         </TextBlock>
 
       </Grid>
     </ScrollViewer>
 
-    <Button VerticalAlignment="Top" Margin="30, 10">画像ファイルを開く</Button>
-      
-    </Grid>
+    <TextBlock HorizontalAlignment="Right"
+               VerticalAlignment="Top" Margin="0,10,30,0">
+      サーバル画像: <Hyperlink NavigateUri="https://en.wikipedia.org/wiki/File:Servals_Thoiry_19801.jpg">Wikipedia より</Hyperlink>
+    </TextBlock>
+
+    <Button VerticalAlignment="Top" Margin="30, 10"
+            Click="FileOpenButton_Click"
+            >画像ファイルを開く</Button>
+
+  </Grid>
 </Page>
