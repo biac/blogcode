@@ -1,0 +1,91 @@
+﻿<Page
+    x:Class="CenterImage.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CenterImage"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+  <Page.Resources>
+    <Style TargetType="TextBlock">
+      <Setter Property="TextWrapping" Value="WrapWholeWords" />
+    </Style>
+    <Style TargetType="TextBlock" x:Key="Header">
+      <Setter Property="FontSize" Value="24" />
+      <Setter Property="Foreground" Value="#00a2e8" />
+      <Setter Property="HorizontalAlignment" Value="Center" />
+    </Style>
+  </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <ScrollViewer VerticalAlignment="Center" 
+                  VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollMode="Auto" HorizontalScrollBarVisibility="Auto">
+      <Grid Width="1000" Margin="30,50,30,20">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition />
+          <ColumnDefinition Width="20" />
+          <ColumnDefinition />
+          <ColumnDefinition Width="20" />
+          <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Image.Source に StorageFile をバインド -->
+        <TextBlock Style="{StaticResource Header}">StorageFile をバインド</TextBlock>
+        <Image Grid.Row="1" Height="200"
+               Source="{x:Bind _file.Path}" />
+        <TextBlock Grid.Row="2" IsTextSelectionEnabled="True">
+&lt;Image Height="200"
+              <Bold>Source="{x:Bind _file.Path}"</Bold> /&gt;
+          <LineBreak/><LineBreak/>
+          Image コントロールの Source プロパティには、
+          StorageFile オブジェクトの Path プロパティを直接バインドできる
+        </TextBlock>
+
+        <!-- 正方形に表示 -->
+        <TextBlock Style="{StaticResource Header}"
+                   Grid.Column="2">正方形に表示</TextBlock>
+        <Image Grid.Column="2" Grid.Row="1" Height="200" Width="200" 
+               Source="{x:Bind _file.Path}" Stretch="UniformToFill" />
+        <TextBlock Grid.Column="2" Grid.Row="2" IsTextSelectionEnabled="True">
+&lt;Image Height="200" Width="200" 
+               Source="{x:Bind _file.Path}" <Bold>Stretch="UniformToFill"</Bold> /&gt;
+          <LineBreak/><LineBreak/>
+          Image コントロールの Stretch プロパティを
+          UniformToFill にすると、 画像の縦横比 (アスペクト) は保たれる。
+          ただし、 画像の左上を基準として表示されてしまう
+        </TextBlock>
+
+        <!-- 画像の中央を表示 -->
+        <TextBlock Style="{StaticResource Header}"
+                   Grid.Column="4">画像の中央を表示</TextBlock>
+        <Rectangle Grid.Column="4" Grid.Row="1" Height="200" Width="200">
+          <Rectangle.Fill>
+            <ImageBrush Stretch="UniformToFill" ImageSource="{x:Bind _file.Path}" />
+          </Rectangle.Fill>
+        </Rectangle>
+        <TextBlock Grid.Column="4" Grid.Row="2" IsTextSelectionEnabled="True">
+&lt;Rectangle Height="200" Width="200"&gt;<LineBreak/>
+           &lt;Rectangle.Fill&gt;<LineBreak/>
+             <Bold>&lt;ImageBrush Stretch="UniformToFill" ImageSource="{x:Bind _file.Path}" /&gt;</Bold><LineBreak/>
+          &lt;/Rectangle.Fill&gt;<LineBreak/>
+&lt;/Rectangle /&gt;
+          <LineBreak/><LineBreak/>
+          Image コントロールをやめて Rectangle コントロールや Grid コントロールなどにして、
+          その中を ImageBrush コントロールで埋める。
+          ImageBrush コントロールの Stretch プロパティを UniformToFill にすれば、
+          画像の縦横比 (アスペクト) を保ちつつ画像の中央部分を表示できる
+        </TextBlock>
+
+      </Grid>
+    </ScrollViewer>
+
+    <Button VerticalAlignment="Top" Margin="30, 10">画像ファイルを開く</Button>
+      
+    </Grid>
+</Page>

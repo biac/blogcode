@@ -74,7 +74,7 @@ namespace Win2DColorMatrixEffect
 
         // ※ ここでは、Win2D Canvas を ViewBox の中に入れているため、表示サイズの調整が必要。
         // (Win2D Canvas を固定スケールで表示しているなら、つまり、普通に使っているなら、不要)
-        canvasGrid.Width = bitmap.Size.Width;
+        canvasGrid.Width = bitmap.Size.Width * 2;
         canvasGrid.Height = bitmap.Size.Height;
       };
 
@@ -87,8 +87,21 @@ namespace Win2DColorMatrixEffect
 
       SizeChanged += (s, e) => 
       {
-        double edgeLength = Math.Min(ActualWidth, ActualHeight);
-        viewBox1.Width = viewBox1.Height = edgeLength;
+        double edgeLength = Math.Min(ActualWidth / 2.0, ActualHeight);
+        viewBox1.Width = edgeLength * 2;
+        viewBox1.Height = edgeLength;
+      };
+
+
+      const string ClockPath1 = "Assets/ClockPanel.png";
+      const string ClockPath2 = "Assets/ClockPanel1.png";
+      image1.Source = ClockPath1;
+      image1.Tapped += (s, e) => 
+      {
+        if(image1.Source == ClockPath1)
+          image1.Source = ClockPath2;
+        else
+          image1.Source = ClockPath1;
       };
     }
   }
