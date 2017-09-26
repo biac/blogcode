@@ -12,3 +12,9 @@ CompactOverlay モードとの切り替え処理は、 [ViewMode クラス](./To
 
 
 ![スクリーンキャプチャー](../images/20170816_CompactOverlayMode01.png)
+
+  
+当然だけど、 Xamarin.Forms でも実装出来ます。
+
+![スクリーンキャプチャー](../images/20170926_TopMostWindowXamarin01.png)
+
