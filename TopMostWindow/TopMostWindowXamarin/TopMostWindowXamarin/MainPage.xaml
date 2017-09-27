@@ -7,7 +7,7 @@
   <Grid>
 
     <Grid HorizontalOptions="Center" VerticalOptions="Center">
-      <Image WidthRequest="128" HeightRequest="128" Aspect="AspectFill"
+      <Image WidthRequest="96" HeightRequest="96" Aspect="AspectFill"
          HorizontalOptions="Center">
         <Image.Source>
           <OnPlatform x:TypeArguments="ImageSource"
@@ -33,7 +33,7 @@
     <BoxView WidthRequest="30" HeightRequest="30" Color="DarkRed"
              HorizontalOptions="Start" VerticalOptions="Start"/>
 
-    <Switch Toggled="Switch_Toggled"
+    <Switch x:Name="TopMostSwitch" Toggled="Switch_Toggled"
             HorizontalOptions="Start" VerticalOptions="End"/>
 
   </Grid>

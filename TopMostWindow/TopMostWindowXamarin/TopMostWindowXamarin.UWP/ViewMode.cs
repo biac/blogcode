@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.UI.ViewManagement;
@@ -47,12 +44,12 @@ namespace TopMostWindowXamarin.UWP
       };
     }
 
-    public async Task<bool> EnterCompactOverlayAsync(double desiredWidth = default(double), double desiredHeight = default(double))
+    public async Task<bool> EnterCompactOverlayAsync(double widthRequest = default(double), double heightRequest = default(double))
     {
       if (!IsCompactOverlaySupported)
         return false;
 
-      Size desiredSize = new Size(desiredWidth, desiredHeight);
+      Size desiredSize = new Size(widthRequest, heightRequest);
 
       ViewModePreferences compactOptions
         = ViewModePreferences.CreateDefault(ApplicationViewMode.CompactOverlay);

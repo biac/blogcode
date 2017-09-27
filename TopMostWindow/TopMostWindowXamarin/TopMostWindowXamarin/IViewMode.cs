@@ -13,7 +13,7 @@ namespace TopMostWindowXamarin
 
     event EventHandler ViewModeChanged;
 
-    Task<bool> EnterCompactOverlayAsync(double desiredWidth = 0, double desiredHeight = 0);
+    Task<bool> EnterCompactOverlayAsync(double widthRequest = 0, double heightRequest = 0);
     Task<bool> ExitCompactOverlayAsync();
   }
 }
