@@ -9,3 +9,11 @@
 ![スクリーンキャプチャー](../images/20170729_DraggableWindow01_anime.gif)
 
 - クラウディア画像 [© 2011 Microsoft Corporation All Rights Reserved.](https://msdn.microsoft.com/ja-jp/claudia00_03.aspx)
+
+..
+..
+Xamarin.Forms でも、もちろん出来ます♪
+
+いちいち Renderer として実装するしかなさそうで、 ちょっと面倒ですけど。
+
+![スクリーンキャプチャー](../images/20170929_DraggableWindowXamarin01.png)
