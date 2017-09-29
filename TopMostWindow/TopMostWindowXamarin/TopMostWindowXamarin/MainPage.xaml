@@ -10,11 +10,10 @@
       <Image WidthRequest="96" HeightRequest="96" Aspect="AspectFill"
          HorizontalOptions="Center">
         <Image.Source>
-          <OnPlatform x:TypeArguments="ImageSource"
-                iOS=""
-                Android=""
-                WinPhone="Assets/xamagon.png"
-                />
+          <OnPlatform x:TypeArguments="ImageSource">
+            <On Platform="iOS,Android"></On>
+            <On Platform="Windows">Assets/xamagon.png</On>
+          </OnPlatform>
         </Image.Source>
       </Image>
 
