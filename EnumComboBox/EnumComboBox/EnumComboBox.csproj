@@ -95,15 +95,19 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="BindableBase.cs" />
-    <Compile Include="EnumComboBox.cs" />
-    <Compile Include="EnumToIndexConverter.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\SampleEnum2.cs" />
+    <Compile Include="ViewModel\SampleData.cs" />
+    <Compile Include="ViewModel\BindableBase.cs" />
+    <Compile Include="EnumComboBox\DependencyPropertyWatcher.cs" />
+    <Compile Include="EnumComboBox\EnumComboBox.cs" />
+    <Compile Include="ValueConverter\EnumToIndexConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SampleEnum2ComboBox.cs" />
-    <Compile Include="SampleEnum1ComboBox.cs" />
+    <Compile Include="EnumComboBox\SampleEnum2ComboBox.cs" />
+    <Compile Include="EnumComboBox\SampleEnum1ComboBox.cs" />
+    <Compile Include="ViewModel\SampleEnum1.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

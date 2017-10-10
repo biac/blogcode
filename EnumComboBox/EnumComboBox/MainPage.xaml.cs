@@ -18,31 +18,12 @@ using Windows.UI.Xaml.Navigation;
 
 namespace EnumComboBox
 {
-  public class SampleEnum1Selection : BindableBase
-  {
-    private SampleEnum1 m_enum1;
-    public SampleEnum1 SampleEnum1Data
-    {
-      get => m_enum1;
-      set => base.SetProperty(ref m_enum1, value);
-    }
-  }
-
-  public class SampleData
-  {
-    public List<List<SampleEnum1Selection>> Data { get; }
-      = new List<List<SampleEnum1Selection>>();
-  }
-
-
-
-
   /// <summary>
   /// それ自体で使用できる空白ページまたはフレーム内に移動できる空白ページ。
   /// </summary>
   public sealed partial class MainPage : Page
   {
-    // バインドするデータ
+    // この Page の DataContext にバインドするデータ
     SampleData m_sampleData = new SampleData();
 
     public MainPage()
@@ -56,7 +37,6 @@ namespace EnumComboBox
       base.OnNavigatedTo(e);
 
       PrepareData();
-      //Bindings.Update();
     }
 
 

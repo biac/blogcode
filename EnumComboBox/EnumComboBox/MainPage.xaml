@@ -14,10 +14,7 @@
     <local:EnumToIndexConverter x:Key="EnumToIndexConverter" />
   </Page.Resources>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    <!--<local:SampleEnum1ComboBox x:Name="ComboBox1" />
-    <TextBlock Text="{x:Bind ComboBox1.SelectedValue, Mode=OneWay}"
-               Margin="10,40,0,0"/>-->
+  <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <ListView ItemsSource="{Binding Data}">
       <ListView.ItemTemplate>
@@ -47,6 +44,6 @@
         </DataTemplate>
       </ListView.ItemTemplate>
     </ListView>
-      
+
   </Grid>
 </Page>

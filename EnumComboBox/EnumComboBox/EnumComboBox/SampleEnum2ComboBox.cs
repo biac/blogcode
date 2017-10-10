@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace EnumComboBox
 {
-  public enum SampleEnum2
-  { a=0, b=1, c=2, }
-
   public class SampleEnum2ComboBox : EnumComboBox<SampleEnum2>
   {
     private string[] m_nameArray

@@ -3,9 +3,6 @@ using System.Collections.Generic;
 
 namespace EnumComboBox
 {
-  public enum SampleEnum1
-  { One, Two, Three, Four, Five, }
-
   public class SampleEnum1ComboBox : EnumComboBox<SampleEnum1>
   {
     private Dictionary<SampleEnum1, string> m_nameDictionary
@@ -20,8 +17,8 @@ namespace EnumComboBox
     protected override string GetName(SampleEnum1 value)
     {
       return Enum.IsDefined(typeof(SampleEnum1), value)
-                ? m_nameDictionary[value]
-                : null;
+                  ? m_nameDictionary[value]
+                  : null;
     }
   }
 }
