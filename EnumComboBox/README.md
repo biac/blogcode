@@ -50,7 +50,7 @@ ItemsSource と SelectedValue に違うものをバインドするのも、 な�
 そういうときは、 ユーザーコントロールやカスタムコントロールを作って、 シンプルに Enum 値のプロパティだけをバインドすれば済むようにしちゃいましょう。  
 
   
-今回は、 ComboBox を継承して EnumComboBox を作りました。  
+今回は、 ComboBox を継承して EnumComboBox を作りました (画面キャプチャで下段の ComboBox)。  
 XAML は、 次のようにスッキリと書けるようになります。  
   
 &lt;local:SampleEnum1ComboBox SelectedValue=&quot;{Binding SampleEnum1Data, Mode=TwoWay}&quot; /&gt;  
