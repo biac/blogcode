@@ -43,7 +43,7 @@ SelectedIndex=&quot;{Binding SampleEnum1Data, Mode=TwoWay, Converter={StaticReso
 ## カスタムコントロールを作る (EnumComboBox)
 
   
-上のやり方だと ComboBox のプロパティ設定がコチャついていて、 面白くないです。  
+上のやり方だと ComboBox のプロパティ設定がゴチャついていて、 面白くないです。  
 ItemsSource と SelectedValue に違うものをバインドするのも、 なんだか分かりにくいです。  
 
   
