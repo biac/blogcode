@@ -62,4 +62,10 @@ XAML は、 次のようにスッキリと書けるようになります。
   
   
 ![スクリーンキャプチャー](../images/20171010_EnumComboBox01.png)
+  
+【画面の構成】  
+・画面全体を覆う ListView: 縦方向に 3 つの ListViewItem が表示されています  
+・各 ListViewItem には横向きの ListView: Enum 値のコレクションとバインドしています  
+・横向きの ListView の各 ListViewItem: 縦方向の StackPanel を使って、
+ 上から順に普通の ComboBox、 EnumComboBox、 TextBlock を配置。 それぞれ Enum 値 とバインドしています  
 
