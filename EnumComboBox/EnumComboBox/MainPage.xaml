@@ -15,14 +15,22 @@
   </Page.Resources>
 
   <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition />
+    </Grid.RowDefinitions>
 
-    <ListView ItemsSource="{Binding Data}">
+    <TextBlock HorizontalAlignment="Right">
+      フォーカスのあるテキストボックス: <Run Text="{x:Bind m_FocusedIndex}"/>
+    </TextBlock>
+
+    <ListView ItemsSource="{Binding Data}" Grid.Row="1">
       <ListView.ItemTemplate>
         <DataTemplate>
           <ListView ItemsSource="{Binding}"
             ScrollViewer.HorizontalScrollBarVisibility="Auto"
-          ScrollViewer.HorizontalScrollMode="Enabled"
-          ScrollViewer.VerticalScrollMode="Disabled">
+            ScrollViewer.HorizontalScrollMode="Enabled"
+            ScrollViewer.VerticalScrollMode="Disabled">
             <ListView.ItemsPanel>
               <ItemsPanelTemplate>
                 <VirtualizingStackPanel Orientation="Horizontal" />
@@ -30,13 +38,15 @@
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
               <DataTemplate>
-                <StackPanel>
+                <StackPanel Margin="0,5">
                   <ComboBox ItemsSource="{StaticResource SampleEnum1Dictionary}"
                             DisplayMemberPath="Value" 
                             SelectedIndex="{Binding SampleEnum1Data, Mode=TwoWay, Converter={StaticResource EnumToIndexConverter}}"
                             />
                   <local:SampleEnum1ComboBox SelectedValue="{Binding SampleEnum1Data, Mode=TwoWay}" />
-                  <TextBlock Text="{Binding SampleEnum1Data}" />
+                  <TextBox Text="{Binding SampleEnum1Data}"
+                           GotFocus="TextBox_GotFocus"
+                           LostFocus="TextBox_LostFocus" />
                 </StackPanel>
               </DataTemplate>
             </ListView.ItemTemplate>

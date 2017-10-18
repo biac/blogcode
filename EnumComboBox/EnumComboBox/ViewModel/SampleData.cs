@@ -18,5 +18,8 @@ namespace EnumComboBox
       get => m_enum1;
       set => base.SetProperty(ref m_enum1, value);
     }
+
+    // 2017/10/18 追加
+    public int Index { get; set; }
   }
 }

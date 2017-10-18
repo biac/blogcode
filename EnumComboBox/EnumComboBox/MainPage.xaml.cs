@@ -57,21 +57,51 @@ namespace EnumComboBox
 
     private void PrepareData()
     {
+      int index = 1;
       m_sampleData.Data.Add(
         new List<SampleEnum1Selection> {
-          new SampleEnum1Selection{ SampleEnum1Data = SampleEnum1.One, },
+          new SampleEnum1Selection{
+            SampleEnum1Data = SampleEnum1.One, Index=index++, },
         });
       m_sampleData.Data.Add(
         new List<SampleEnum1Selection> {
-          new SampleEnum1Selection{ SampleEnum1Data = SampleEnum1.One, },
-          new SampleEnum1Selection{ SampleEnum1Data = SampleEnum1.Two, },
+          new SampleEnum1Selection{
+            SampleEnum1Data = SampleEnum1.One, Index=index++, },
+          new SampleEnum1Selection{
+            SampleEnum1Data = SampleEnum1.Two, Index=index++, },
         });
       m_sampleData.Data.Add(
         new List<SampleEnum1Selection> {
-          new SampleEnum1Selection{ SampleEnum1Data = SampleEnum1.Three, },
-          new SampleEnum1Selection{ SampleEnum1Data = SampleEnum1.Four, },
-          new SampleEnum1Selection{ SampleEnum1Data = SampleEnum1.Five, },
+          new SampleEnum1Selection{
+            SampleEnum1Data = SampleEnum1.Three, Index=index++, },
+          new SampleEnum1Selection{
+            SampleEnum1Data = SampleEnum1.Four, Index=index++, },
+          new SampleEnum1Selection{
+            SampleEnum1Data = SampleEnum1.Five, Index=index++, },
         });
+    }
+
+
+
+    // 2017/10/18 追加
+
+    private int m_FocusedIndex {get;set;}
+
+    private void TextBox_GotFocus(object sender, RoutedEventArgs e)
+    {
+      // フォーカスを受け取った TextBox にバインドされているデータを取り出す
+      var textBox = sender as TextBox;
+      var bindedData = textBox.DataContext as SampleEnum1Selection;
+
+      // バインドされているデータのインデックスを画面右上に表示
+      m_FocusedIndex = bindedData.Index;
+      Bindings.Update();
+    }
+
+    private void TextBox_LostFocus(object sender, RoutedEventArgs e)
+    {
+      m_FocusedIndex = 0;
+      Bindings.Update();
     }
   }
 }
