@@ -92,7 +92,7 @@ namespace EnumComboBox
       // フォーカスを受け取った TextBox にバインドされているデータを取り出す
       var textBox = sender as TextBox;
       var bindedData = textBox.DataContext as SampleEnum1Selection;
-
+      
       // バインドされているデータのインデックスを画面右上に表示
       m_FocusedIndex = bindedData.Index;
       Bindings.Update();

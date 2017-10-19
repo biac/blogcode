@@ -98,6 +98,7 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ValueConverter\SampleEnum1ToSolidColorBrushConverter.cs" />
     <Compile Include="ViewModel\SampleEnum2.cs" />
     <Compile Include="ViewModel\SampleData.cs" />
     <Compile Include="ViewModel\BindableBase.cs" />

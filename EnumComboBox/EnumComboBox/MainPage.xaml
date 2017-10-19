@@ -12,6 +12,7 @@
 
   <Page.Resources>
     <local:EnumToIndexConverter x:Key="EnumToIndexConverter" />
+    <local:SampleEnum1ToSolidColorBrushConverter x:Key="DataToBrushConverter" />
   </Page.Resources>
 
   <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -46,7 +47,8 @@
                   <local:SampleEnum1ComboBox SelectedValue="{Binding SampleEnum1Data, Mode=TwoWay}" />
                   <TextBox Text="{Binding SampleEnum1Data}"
                            GotFocus="TextBox_GotFocus"
-                           LostFocus="TextBox_LostFocus" />
+                           LostFocus="TextBox_LostFocus"
+                           Background="{Binding SampleEnum1Data, Converter={StaticResource DataToBrushConverter}}" />
                 </StackPanel>
               </DataTemplate>
             </ListView.ItemTemplate>
