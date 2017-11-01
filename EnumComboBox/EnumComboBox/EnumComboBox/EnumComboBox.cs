@@ -58,25 +58,5 @@ namespace EnumComboBox
       else
         this.SelectedIndex = m_lastSelectedIndex;
     }
-
-
-
-
-    // 継承したプロパティのうち、見せたくないものを隠す
-    private new object ItemsSource
-    {
-      get => base.ItemsSource;
-      set => base.ItemsSource = value;
-    }
-    private new string DisplayMemberPath
-    {
-      get => base.DisplayMemberPath;
-      set => base.DisplayMemberPath = value;
-    }
-    private new string SelectedValuePath
-    {
-      get => base.SelectedValuePath;
-      set => base.SelectedValuePath = value;
-    }
   }
 }
