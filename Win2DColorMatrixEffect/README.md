@@ -2,7 +2,7 @@
 
 【UWP アプリ】ビットマップ画像の色を変える (Visual Studio 2017)  
 
-[Win2D](microsoft.github.io/Win2D/) の [ColorMatrixEffect](http://microsoft.github.io/Win2D/html/T_Microsoft_Graphics_Canvas_Effects_ColorMatrixEffect.htm) を使うサンプルです。  
+[Win2D](http://microsoft.github.io/Win2D/) の [ColorMatrixEffect](http://microsoft.github.io/Win2D/html/T_Microsoft_Graphics_Canvas_Effects_ColorMatrixEffect.htm) を使うサンプルです。  
 
 
 ブログ記事:  
